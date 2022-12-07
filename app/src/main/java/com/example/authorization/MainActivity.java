@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Button login;
-    private TextView loginLocked = (TextView) findViewById(R.id.login_locket);
-    private TextView attempts = (TextView) findViewById(R.id.tvAttempts);
-    private TextView numberOfAttempts = (TextView) findViewById(R.id.tvNumber);
+    private TextView loginLocked;
+    private TextView attempts;
+    private TextView numberOfAttempts;
 
     // Число для подсчета попыток залогиниться:
     int numberOfRemainingLoginAttempts = 3;
@@ -33,15 +33,19 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.etName);
         password = (EditText) findViewById(R.id.etPass);
         login = (Button) findViewById(R.id.button);
-        //loginLocked = (TextView) findViewById(R.id.login_locket);
-        //attempts = (TextView) findViewById(R.id.tvAttempts);
-        //numberOfAttempts = (TextView) findViewById(R.id.tvNumber);
+        loginLocked = (TextView) findViewById(R.id.login_locket);
+        attempts = (TextView) findViewById(R.id.tvAttempts);
+        numberOfAttempts = (TextView) findViewById(R.id.tvNumber);
         numberOfAttempts.setText(Integer.toString(numberOfRemainingLoginAttempts));
+
+        login.setOnClickListener(view -> {
+            setLogin(view);
+        });
 
     }
 
     // Обрабатываем нажатие кнопки "Войти":
-    public void Login(View view) {
+    public void setLogin(View view) {
 
 
         // Если введенные логин и пароль будут словом "admin",
